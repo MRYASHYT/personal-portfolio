@@ -22,6 +22,8 @@ export interface ResumeData {
     email: string;
     phone: string;
     linkedin: string;
+    github?: string;
+    website?: string;
   };
   experience: ExperienceItem[];
   education: EducationItem[];
@@ -30,81 +32,62 @@ export interface ResumeData {
 
 export const resumeData: ResumeData = {
   personal: {
-    name: "Alexandra Moore,",
-    title: "Senior Producer",
-    bio: "A seasoned Senior Producer with 10+ years of experience, I excel in leading complex marketing and design projects from concept to completion.",
-    email: "alexandramoore@email.com",
-    phone: "(555) 123-4567",
-    linkedin: "https://linkedin.com/in/alexandramoore",
+    name: "Yash Gupta,",
+    title: "Developer",
+    bio: "I'm a Product-Focused Developer and Creative Technologist from India, working across AI/ML, blockchain, automation, and full-stack development. I enjoy turning bold ideas into real-world, scalable, and smart applications.",
+    email: "contact@mryashdev.me",
+    phone: "+91 8595997079",
+    linkedin: "https://linkedin.com/in/mryashdev",
+    github: "https://github.com/mryashdev",
+    website: "https://mryashdev.me",
   },
   experience: [
     {
-      title: "Senior Producer",
-      company: "Creative Agency XYZ",
-      location: "Remote & New York, NY",
-      dates: "June 2022 - Present",
+      title: "Fresher — Seeking First Opportunity",
+      company: "Open to Roles",
+      location: "Delhi, India",
+      dates: "Present",
       responsibilities: [
-        "Seamlessly facilitate diverse creative experiences: from immersive installations to cinematic narratives. A catalyst for collaboration across all mediums.",
-        "Clients include: Lunethra, Driftwell, Clyra, Forgekind and more.",
-      ],
-    },
-    {
-      title: "Senior Producer",
-      company: "Pixel Studios",
-      location: "New York, NY",
-      dates: "December 2021 - June 2022",
-      responsibilities: [
-        "Orchestrated the creation of integrated video, motion, and photo content for multi-platform marketing campaigns, ensuring seamless execution and brand alignment.",
-        "Directed all phases of production operations (pre-production, production, post-production), meticulously managing budgets, contracts, and legal requirements to deliver projects on time and within quality standards.",
-        "Strategically developed and managed production schedules, creative strategies, and talent relations, optimizing resources to deliver high-quality content within budget parameters.",
-        "Clients include: Nestive, Zentrox, Pollenate, Vireo and more.",
-      ],
-    },
-    {
-      title: "Content Producer",
-      company: "Creative Hub Studio",
-      location: "Los Angeles, CA",
-      dates: "October 2016 - March 2018",
-      responsibilities: [
-        "Facilitated clear and efficient communication across cross-functional teams (Marketing, Brand, Creative, IT, QA), ensuring seamless collaboration and project alignment.",
-        "Proactively identified and integrated industry trends, emerging technologies, and cultural insights to enhance creative output and maintain brand relevance.",
-        "Clients include: Lunethra, Forgekind and more.",
+        "Motivated and detail-oriented B.Tech CSE student with hands-on project experience and a solid understanding of AI, development, and automation.",
+        "Building intelligent systems using OpenAI, n8n, and APIs to automate workflows and create smart tools.",
+        "Developing high-performance websites and platforms with modern tech stacks, built for speed, scale, and security.",
+        "Creating cross-platform mobile apps using Flutter, with clean UI and smooth UX for both Android and iOS.",
+        "Building smart contracts and decentralized apps (dApps) using Solidity and Web3 for secure, transparent systems.",
       ],
     },
   ],
   education: [
     {
-      degree: "Bachelor of Arts in Communications",
-      school: "New York University",
-      location: "New York, NY",
-      dates: "2008 - 2012",
+      degree: "B.Tech in Computer Science and Engineering (Lateral Entry)",
+      school: "Institute of Technology and Management",
+      location: "Janakpuri Campus, Delhi",
+      dates: "2025 – 2028 (Expected)",
       details: [
-        "Concentration in Media, Culture, and Communication.",
-        "Dean's List, 2010–2012.",
+        "Currently pursuing Bachelor's with focus on software development, AI/ML.",
       ],
     },
     {
-      degree: "Certificate in Digital Production",
-      school: "General Assembly",
-      location: "New York, NY",
-      dates: "2014",
+      degree: "Diploma in Computer Engineering",
+      school: "Delhi Skill and Entrepreneurship University (DSEU)",
+      location: "Rajokri Campus, Delhi",
+      dates: "2022 – 2025",
       details: [
-        "Intensive program covering digital content strategy, production workflows, and emerging media technologies.",
+        "Completed diploma with focus on computer engineering fundamentals. Percentage: 62%.",
       ],
     },
   ],
   skills: [
-    "Project Management",
-    "Creative Direction",
-    "Budget Management",
-    "Cross-Functional Leadership",
-    "Content Strategy",
-    "Video Production",
-    "Brand Development",
-    "Client Relations",
-    "Agile Workflows",
-    "Adobe Creative Suite",
-    "Motion Graphics",
-    "Stakeholder Management",
+    "AI & Automation",
+    "OpenAI",
+    "n8n",
+    "React",
+    "Node.js",
+    "HTML & CSS",
+    "Flutter",
+    "Solidity",
+    "Web3",
+    "Blockchain",
+    "Full-Stack Development",
+    "Mobile App Development",
   ],
 };

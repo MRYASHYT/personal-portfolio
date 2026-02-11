@@ -44,8 +44,28 @@ const Sidebar = () => {
           rel="noopener noreferrer"
           className="block text-[15px] text-foreground hover:text-muted-foreground transition-colors duration-200"
         >
-          Linkedin ↗
+          LinkedIn ↗
         </a>
+        {personal.github && (
+          <a
+            href={personal.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[15px] text-foreground hover:text-muted-foreground transition-colors duration-200"
+          >
+            GitHub ↗
+          </a>
+        )}
+        {personal.website && (
+          <a
+            href={personal.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[15px] text-foreground hover:text-muted-foreground transition-colors duration-200"
+          >
+            Website ↗
+          </a>
+        )}
       </nav>
     </aside>
   );
