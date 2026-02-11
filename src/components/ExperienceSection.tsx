@@ -1,4 +1,5 @@
 import { resumeData } from "@/data/resumeData";
+import FadeInOnScroll from "@/components/FadeInOnScroll";
 
 const ExperienceSection = () => {
   const { experience } = resumeData;
@@ -25,48 +26,48 @@ const ExperienceSection = () => {
         </a>
       </div>
 
-      <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16 animate-fade-up-delay-1">
-        Experience
-      </h2>
+      <FadeInOnScroll>
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16">
+          Experience
+        </h2>
+      </FadeInOnScroll>
 
       <div className="space-y-0">
         {experience.map((job, index) => (
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
-            <div
-              className="py-14 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 animate-fade-up-delay-2"
-            >
-              {/* Left: Job meta */}
-              <div>
-                <h3 className="text-[20px] font-semibold text-foreground leading-snug">
-                  {job.title}
-                </h3>
-                <a
-                  href="#"
-                  className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 mt-2 inline-block"
-                >
-                  {job.company} ↗
-                </a>
-                <p className="text-[14px] text-muted-foreground mt-1">
-                  {job.dates}
-                </p>
-                <p className="text-[14px] text-muted-foreground">
-                  {job.location}
-                </p>
-              </div>
-
-              {/* Right: Responsibilities */}
-              <ul className="space-y-5 mt-1">
-                {job.responsibilities.map((item, i) => (
-                  <li
-                    key={i}
-                    className="text-[15px] leading-[1.75] text-foreground pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-muted-foreground"
+            <FadeInOnScroll>
+              <div className="py-14 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+                <div>
+                  <h3 className="text-[20px] font-semibold text-foreground leading-snug">
+                    {job.title}
+                  </h3>
+                  <a
+                    href="#"
+                    className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 mt-2 inline-block"
                   >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    {job.company} ↗
+                  </a>
+                  <p className="text-[14px] text-muted-foreground mt-1">
+                    {job.dates}
+                  </p>
+                  <p className="text-[14px] text-muted-foreground">
+                    {job.location}
+                  </p>
+                </div>
+
+                <ul className="space-y-5 mt-1">
+                  {job.responsibilities.map((item, i) => (
+                    <li
+                      key={i}
+                      className="text-[15px] leading-[1.75] text-foreground pl-5 relative before:content-['•'] before:absolute before:left-0 before:text-muted-foreground"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeInOnScroll>
           </div>
         ))}
         <div className="border-t border-border" />

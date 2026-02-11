@@ -1,3 +1,19 @@
+export interface ExperienceItem {
+  title: string;
+  company: string;
+  location: string;
+  dates: string;
+  responsibilities: string[];
+}
+
+export interface EducationItem {
+  degree: string;
+  school: string;
+  location: string;
+  dates: string;
+  details?: string[];
+}
+
 export interface ResumeData {
   personal: {
     name: string;
@@ -7,13 +23,9 @@ export interface ResumeData {
     phone: string;
     linkedin: string;
   };
-  experience: Array<{
-    title: string;
-    company: string;
-    location: string;
-    dates: string;
-    responsibilities: string[];
-  }>;
+  experience: ExperienceItem[];
+  education: EducationItem[];
+  skills: string[];
 }
 
 export const resumeData: ResumeData = {
@@ -59,5 +71,40 @@ export const resumeData: ResumeData = {
         "Clients include: Lunethra, Forgekind and more.",
       ],
     },
+  ],
+  education: [
+    {
+      degree: "Bachelor of Arts in Communications",
+      school: "New York University",
+      location: "New York, NY",
+      dates: "2008 - 2012",
+      details: [
+        "Concentration in Media, Culture, and Communication.",
+        "Dean's List, 2010–2012.",
+      ],
+    },
+    {
+      degree: "Certificate in Digital Production",
+      school: "General Assembly",
+      location: "New York, NY",
+      dates: "2014",
+      details: [
+        "Intensive program covering digital content strategy, production workflows, and emerging media technologies.",
+      ],
+    },
+  ],
+  skills: [
+    "Project Management",
+    "Creative Direction",
+    "Budget Management",
+    "Cross-Functional Leadership",
+    "Content Strategy",
+    "Video Production",
+    "Brand Development",
+    "Client Relations",
+    "Agile Workflows",
+    "Adobe Creative Suite",
+    "Motion Graphics",
+    "Stakeholder Management",
   ],
 };
