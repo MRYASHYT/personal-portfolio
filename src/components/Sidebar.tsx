@@ -16,7 +16,7 @@ const Sidebar = () => {
       </div>
 
       {/* Bio */}
-      <div className="mt-auto lg:mt-32">
+      <div id="about" className="mt-auto lg:mt-32">
         <div className="border-t border-border mb-8" />
         <p className="text-[16px] leading-[1.7] text-muted-foreground max-w-[300px] animate-fade-up-delay-1">
           {personal.bio}

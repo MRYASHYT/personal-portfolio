@@ -8,12 +8,12 @@ const ExperienceSection = () => {
     <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pt-8 pb-20">
       {/* About link - top right on desktop */}
       <div className="hidden lg:block fixed top-8 right-16 z-10 animate-fade-up">
-        <a
-          href="#about"
-          className="text-[16px] text-foreground hover:text-muted-foreground transition-colors duration-200"
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-[16px] text-foreground hover:text-muted-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer"
         >
           About
-        </a>
+        </button>
       </div>
 
       {/* Mobile About link */}
