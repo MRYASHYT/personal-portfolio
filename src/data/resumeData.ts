@@ -61,7 +61,7 @@ export const resumeData: ResumeData = {
   education: [
     {
       degree: "B.Tech in Computer Science and Engineering (Lateral Entry)",
-      school: "Institute of Technology and Management",
+      school: "Institute of Information Technology and Management (IITM)",
       location: "Janakpuri Campus, Delhi",
       dates: "2025 – 2028 (Expected)",
       details: [
