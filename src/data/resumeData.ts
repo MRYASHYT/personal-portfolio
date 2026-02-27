@@ -36,11 +36,11 @@ export const resumeData: ResumeData = {
     name: "Yash Gupta,",
     title: "Developer",
     bio: "I'm a Product-Focused Developer and Creative Technologist from India, working across AI/ML, blockchain, automation, and full-stack development. I enjoy turning bold ideas into real-world, scalable, and smart applications.",
-    email: "contact@mryashdev.me",
+    email: "contact@mryashdev.in",
     phone: "+91 8595997079",
     linkedin: "https://linkedin.com/in/mryashdev",
     github: "https://github.com/mryashdev",
-    website: "https://mryashdev.me",
+    website: "https://mryashdev.in",
     image: "/profile.jpg",
   },
   experience: [
