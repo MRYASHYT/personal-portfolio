@@ -7,6 +7,13 @@ const Sidebar = () => {
     <aside className="lg:fixed lg:top-0 lg:left-0 lg:w-[420px] lg:h-screen px-10 pt-8 pb-12 lg:py-8 flex flex-col">
       {/* Name & Title */}
       <div className="animate-fade-up">
+        {personal.image && (
+          <img
+            src={personal.image}
+            alt={personal.name}
+            className="w-28 h-28 rounded-2xl object-cover mb-8 grayscale hover:grayscale-0 transition-all duration-500 ease-in-out shadow-2xl ring-1 ring-white/10"
+          />
+        )}
         <h1 className="text-[36px] font-semibold leading-tight tracking-tight text-foreground">
           {personal.name}
         </h1>

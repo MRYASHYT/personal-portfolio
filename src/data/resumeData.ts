@@ -24,6 +24,7 @@ export interface ResumeData {
     linkedin: string;
     github?: string;
     website?: string;
+    image?: string;
   };
   experience: ExperienceItem[];
   education: EducationItem[];
@@ -40,6 +41,7 @@ export const resumeData: ResumeData = {
     linkedin: "https://linkedin.com/in/mryashdev",
     github: "https://github.com/mryashdev",
     website: "https://mryashdev.me",
+    image: "/profile.jpg",
   },
   experience: [
     {
