@@ -33,6 +33,8 @@ export interface Publication {
 export interface BlogPost {
   title: string;
   slug: string;
+  status?: "draft" | "in-progress" | "ready" | "published";
+  content?: string;
 }
 
 export interface ResumeData {
@@ -169,6 +171,86 @@ export const resumeData: ResumeData = {
       title:
         "ReAct agents drift after 7 tool calls — here is what I found and why benchmarks miss it entirely",
       slug: "react-agent-drift",
+      status: "published",
+      content: `There is a failure mode in ReAct-style agents that I have been observing repeatedly while building AgentStress, and I have not seen it documented anywhere in the standard benchmarking literature.
+
+I call it **instruction drift**.
+
+Here is what it looks like in practice.
+
+You give a ReAct agent a clear, specific goal — something like *"find the three most cited papers on multi-agent task decomposition published after 2022, summarize their key contributions, and identify the open problem each one leaves unsolved."*
+
+For the first five or six tool calls, the agent behaves correctly. It searches, retrieves, reads, takes notes. Everything looks fine.
+
+Then somewhere around tool call seven or eight — it starts optimizing for something slightly different from the original goal. Not catastrophically wrong. Just... drifted. It starts summarizing papers without identifying open problems. Or it starts retrieving papers from 2021 because one search result was relevant. Or it starts comparing citation counts instead of finding the top three.
+
+The original instruction is still in the context window. The agent has not forgotten it. But the weight of recent tool outputs has quietly overridden it.
+
+By tool call twelve the agent confidently returns a result that partially addresses the goal — and has no idea it missed anything.
+
+---
+
+**Why standard benchmarks miss this completely**
+
+Most agent benchmarks measure one of two things — task completion rate, or final answer accuracy.
+
+Both metrics evaluate the endpoint. They say nothing about trajectory.
+
+An agent that drifts at step 8 but accidentally recovers by step 15 looks identical to an agent that stayed on track the entire time. Both score 1 on task completion. Both produce a correct-looking final answer.
+
+But they are not the same agent. One got lucky. One is reliable.
+
+This distinction matters enormously in production. If your agent is deployed to handle customer support escalations, legal document review, or financial research — you need the reliable one, not the lucky one. And current benchmarks cannot tell the difference.
+
+---
+
+**What I think is happening mechanically**
+
+My working hypothesis — still being tested — is that instruction drift is caused by a combination of two things:
+
+**1. Recency bias in attention.** As the context grows with tool outputs, the attention mechanism naturally weights recent tokens more heavily than distant ones. The original instruction, sitting at the top of the context, gradually loses influence relative to the accumulating tool results.
+
+**2. Implicit goal substitution.** Tool outputs often contain implicit sub-goals — a search result about paper citations implicitly suggests *"rank by citations"* even if the original instruction said *"find most cited."* The agent starts following the implicit goal embedded in its own tool outputs rather than the explicit goal in the original instruction.
+
+Together these create a feedback loop. Each tool call moves the agent slightly further from the original instruction and slightly closer to whatever the most recent tool output implied it should be doing.
+
+---
+
+**Three patterns I have observed so far**
+
+After running initial tests across different instruction types, drift appears in three consistent patterns:
+
+**Pattern 1 — Goal narrowing.** The agent starts with a broad goal and progressively narrows it to whichever sub-component generated the most interesting tool outputs. By the end it has done one part of the task extremely well and missed the rest entirely.
+
+**Pattern 2 — Implicit constraint adoption.** A tool output contains an unstated assumption — for example, a search API returns results filtered to English-language papers. The agent adopts this constraint as if it were part of the original instruction and stops looking for non-English sources, even if the original goal had no language restriction.
+
+**Pattern 3 — Metric substitution.** The agent replaces the original success metric with a proxy that is easier to measure from tool outputs. *"Most impactful papers"* becomes *"most cited papers"* becomes *"papers with citation counts above 500"* — each substitution feeling locally reasonable while drifting from the original intent.
+
+---
+
+**What I am testing next**
+
+Two interventions I want to evaluate:
+
+**Intervention 1 — Instruction anchoring.** Reinject the original instruction into the context every N tool calls, explicitly marked as the primary goal. Does this reduce drift without significantly increasing latency?
+
+**Intervention 2 — Goal consistency checking.** After each tool call, run a lightweight check — either rule-based or a small model call — that compares the agent's current trajectory against the original instruction. Flag and correct deviations before they compound.
+
+Neither of these is novel in isolation. What I am interested in is the tradeoff — how much reliability improvement do you get per unit of added latency and cost? And does the optimal intervention depend on the type of drift occurring?
+
+I do not have answers yet. But the question is clear enough to pursue.
+
+---
+
+**Why this matters for agentic AI deployment**
+
+The practical implication is uncomfortable: agents that score well on current benchmarks may be systematically unreliable in production for long-horizon tasks — and we would not know it from the benchmark numbers alone.
+
+If you are evaluating an agent system for enterprise deployment and you are relying on task completion rate as your primary metric, you are measuring the wrong thing. You are measuring whether the agent gets lucky, not whether it is reliable.
+
+Building evaluation frameworks that capture trajectory reliability — not just endpoint accuracy — is, I think, one of the most important open problems in practical agentic AI right now.
+
+This note is part of an ongoing series documenting what I find while building AgentStress, a framework for systematic failure mode testing of agentic pipelines.`,
     },
     {
       title:

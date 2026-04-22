@@ -102,7 +102,8 @@ export function getBlogPosts(): ManagedBlogPost[] {
     id: generateId(),
     title: p.title,
     slug: p.slug,
-    status: "draft" as const,
+    status: (p.status as any) || "draft",
+    content: p.content,
     lastUpdated: now(),
   }));
 }
