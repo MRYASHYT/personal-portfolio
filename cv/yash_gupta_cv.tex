@@ -1,0 +1,176 @@
+%-------------------------
+% Yash Gupta - Academic CV
+% AI Researcher | Agentic Systems & AI Orchestration
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage[T1]{fontenc}
+
+\pagestyle{empty}
+\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.2in}
+
+\titleformat{\section}{
+  \large\bfseries
+}{}{0em}{}[\titlerule]
+
+% Custom commands
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]} 
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubItem}[2]{
+  \item
+  \textbf{#1} \\
+  {\small #2}
+}
+
+\begin{document}
+
+%-------------------- HEADING --------------------
+
+\begin{center}
+    {\Huge \textbf{Yash Gupta}} \\ \vspace{4pt}
+    {\normalsize AI Researcher \textbar{} Agentic Systems \& AI Orchestration} \\ \vspace{4pt}
+    Delhi, India \\
+    \faEnvelope \; \href{mailto:research.yashgupta@gmail.com}{research.yashgupta@gmail.com} \quad
+    \faGithub \; \href{https://github.com/mryashdev}{github.com/mryashdev} \quad
+    \faGlobe \; \href{https://mryashdev.in}{mryashdev.in} \quad
+    \faGraduationCap \; \href{https://scholar.google.com/citations?hl=en&user=3uROiJIAAAAJ}{Google Scholar}
+\end{center}
+
+%-------------------- RESEARCH INTERESTS --------------------
+
+\section{Research Interests}
+Reliability and failure mode analysis of agentic AI systems, multi-agent orchestration architectures and task decomposition, trustworthy autonomous decision-making under ambiguous inputs, tool-augmented language models and agentic memory systems, evaluation frameworks for multi-step AI task completion.
+
+%-------------------- EDUCATION --------------------
+
+\section{Education}
+\resumeSubHeadingListStart
+
+\resumeSubItem
+{B.Tech in Computer Science and Engineering (Lateral Entry)}
+{Institute of Information Technology and Management (IITM), Janakpuri Campus, Delhi \hfill 2025 -- 2028 (Expected) \\
+Currently pursuing BTech CS with research focus on agentic AI systems, multi-agent orchestration, and reliable autonomous decision-making pipelines.}
+
+\vspace{4pt}
+
+\resumeSubItem
+{Diploma in Computer Engineering}
+{Delhi Skill and Entrepreneurship University (DSEU), Rajokri Campus, Delhi \hfill 2022 -- 2025 \\
+Foundation in systems programming, operating systems, and computer architecture.}
+
+\resumeSubHeadingListEnd
+
+%-------------------- RESEARCH EXPERIENCE --------------------
+
+\section{Research Experience}
+\resumeSubHeadingListStart
+
+\resumeSubItem
+{Independent Researcher --- Research \& Development \hfill 2024 -- Present \\\small\textit{Research initiated during final year of Diploma, continued through BTech.}}
+{
+\begin{itemize}[leftmargin=0.15in, topsep=0pt, itemsep=2pt]
+  \item Building an evaluation framework to systematically test how agentic AI pipelines fail under ambiguous and adversarially crafted instructions.
+  \item Developing a multi-agent task delegation system with context consistency tracking and partial failure recovery mechanisms.
+  \item Studying task decomposition patterns in LangChain and LangGraph-based agents to identify failure modes in multi-step execution.
+  \item Professional ML data annotation --- evaluating agentic AI outputs for instruction-following accuracy, reasoning consistency, and multi-step task completion quality.
+\end{itemize}
+}
+
+\resumeSubHeadingListEnd
+
+%-------------------- PUBLICATIONS --------------------
+
+\section{Publications}
+\resumeSubHeadingListStart
+
+\resumeSubItem
+{Failure Mode Taxonomy of Agentic AI Pipelines Under Ambiguous Instruction Sets}
+{Yash Gupta. \textit{Research in progress. Manuscript planned. Target: NeurIPS 2027 Workshop on Agentic AI Systems.}}
+
+\vspace{4pt}
+
+\resumeSubItem
+{Reliable Task Delegation in Multi-Agent Systems: Context Consistency and Partial Failure Recovery}
+{Yash Gupta. \textit{Research in progress. Manuscript planned. Target: IEEE/ACM conference submission, 2027.}}
+
+\resumeSubHeadingListEnd
+
+%-------------------- RESEARCH PROJECTS --------------------
+
+\section{Research Projects}
+\resumeSubHeadingListStart
+
+\resumeSubItem
+{AgentStress --- Agentic Pipeline Failure Testing Framework \hfill In Development}
+{Building a Python testing framework that sends crafted instruction variants to LangChain and LangGraph agents, logs tool-call sequences, and classifies failures into categories: instruction drift, premature termination, and tool-call hallucination. \\
+\textit{Stack: Python, LangChain, LangGraph, OpenAI API}}
+
+\vspace{6pt}
+
+\resumeSubItem
+{OrchestBot --- Multi-Agent Task Delegation System \hfill In Development}
+{Building a lightweight orchestration layer where a planner agent breaks down user goals into an execution graph, dispatches subtasks to tool-specific agents (search, code, summarize), and merges outputs with conflict detection. \\
+\textit{Stack: Python, LangGraph, OpenAI API, Redis}}
+
+\resumeSubHeadingListEnd
+
+%-------------------- TECHNICAL SKILLS --------------------
+
+\section{Technical Skills}
+\begin{description}[font=$\bullet$]
+\item {AI \& ML: PyTorch, LangChain, LangGraph, OpenAI API, Prompt Engineering, ML Evaluation}
+\vspace{-4pt}
+\item {Agentic Systems: Agentic Pipelines, Multi-Agent Orchestration, RAG Architecture, Vector Databases}
+\vspace{-4pt}
+\item {Programming: Python, SQL, REST APIs}
+\vspace{-4pt}
+\item {Tools \& Infrastructure: Git, Linux, Redis, Data Annotation Pipelines}
+\end{description}
+
+%-------------------- ACADEMIC INITIATIVES --------------------
+
+\section{Academic Initiatives}
+\resumeSubHeadingListStart
+
+\resumeSubItem
+{Graduate School Preparation --- UTokyo 2028}
+{Targeting MEXT University Recommendation track at University of Tokyo (Graduate School of Information Science and Technology, IST). Building research profile through manuscript preparation, experiment documentation, and targeted professor outreach.}
+
+\vspace{4pt}
+
+\resumeSubItem
+{Japanese Language --- JLPT N4 Certified, Targeting N3}
+{Certified at JLPT N4. Active Japanese language study as part of long-term research integration strategy for collaboration with Japanese research groups.}
+
+\resumeSubHeadingListEnd
+
+%-------------------- LANGUAGES --------------------
+
+\section{Languages}
+\begin{description}[font=$\bullet$]
+\item {English: Fluent}
+\vspace{-4pt}
+\item {Japanese: JLPT N4 Certified (targeting N3)}
+\end{description}
+
+%-------------------- REFERENCES --------------------
+
+\section{References}
+Available upon request.
+
+\end{document}

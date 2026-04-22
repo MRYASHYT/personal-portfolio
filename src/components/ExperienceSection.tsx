@@ -7,10 +7,10 @@ const ExperienceSection = () => {
   return (
     <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pt-8 pb-20">
       {/* About link - top right on desktop */}
-      <div className="hidden lg:block fixed top-8 right-16 z-10 animate-fade-up">
+      <div className="hidden lg:block fixed top-6 right-16 z-50 animate-fade-up">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-[16px] text-foreground hover:text-muted-foreground transition-colors duration-200 bg-transparent border-none cursor-pointer"
+          className="text-[15px] text-foreground hover:text-muted-foreground transition-colors duration-200 bg-background/80 backdrop-blur-md border border-border/50 px-4 py-2 cursor-pointer"
         >
           About
         </button>
@@ -42,12 +42,9 @@ const ExperienceSection = () => {
                   <h3 className="text-[20px] font-semibold text-foreground leading-snug">
                     {job.title}
                   </h3>
-                  <a
-                    href="#"
-                    className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 mt-2 inline-block"
-                  >
-                    {job.company} ↗
-                  </a>
+                  <p className="text-[15px] text-muted-foreground mt-2">
+                    {job.company}
+                  </p>
                   <p className="text-[14px] text-muted-foreground mt-1">
                     {job.dates}
                   </p>

@@ -13,7 +13,7 @@ export default {
       },
     },
     fontFamily: {
-      sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -22,6 +22,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "accent-glow": "hsl(var(--accent-glow))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
