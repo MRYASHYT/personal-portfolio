@@ -78,7 +78,7 @@ export const resumeData: ResumeData = {
       dates: `${new Date().getFullYear()} — Present`,
       responsibilities: [
         "Building an evaluation framework to systematically test how agentic AI pipelines fail under ambiguous and adversarially crafted instructions",
-        "Developing a content fingerprinting pipeline using perceptual hashing to detect near-duplicate visual content across platforms",
+        "Designing orchestration patterns for multi-agent systems — studying how coordinator agents decompose tasks, delegate to sub-agents, and recover from partial execution failures",
         "Studying task decomposition patterns in LangChain and LangGraph-based agents to identify failure modes in multi-step execution",
         "Professional ML data annotation — evaluating agentic AI outputs for instruction-following accuracy, reasoning consistency, and multi-step task completion quality",
       ],

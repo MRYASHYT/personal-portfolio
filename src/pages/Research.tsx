@@ -224,6 +224,9 @@ const Research = () => {
               )}
             </div>
           </FadeInOnScroll>
+          <p className="text-[12px] text-muted-foreground/50 mt-8">
+            Last updated: April 2026
+          </p>
         </div>
       </div>
     </main>
