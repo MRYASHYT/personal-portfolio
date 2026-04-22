@@ -2,8 +2,8 @@ import { resumeData } from "@/data/resumeData";
 import { createClient } from "@supabase/supabase-js";
 
 // Supabase configuration
-const SUBAPASE_URL = import.meta.env.VITE_SUPABASE_URL || "";
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
+const SUBAPASE_URL = "https://jswdnoblhguzuejxclhf.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impzd2Rub2JsaGd1enVlanhjbGhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4ODU5MjMsImV4cCI6MjA5MjQ2MTkyM30.TkjelaCibfGZJivPuCJck0Bs3Peq03ngfe_71-d1ggE";
 
 export const supabase = createClient(SUBAPASE_URL, SUPABASE_ANON_KEY);
 

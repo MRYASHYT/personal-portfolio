@@ -8,7 +8,7 @@ import {
   type PortfolioData,
 } from "@/utils/dataStore";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "";
+const ADMIN_PASSWORD = "MRYASHDEV@JAPAN";
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
