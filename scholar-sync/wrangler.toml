@@ -1,0 +1,10 @@
+name = "scholar-sync"
+main = "index.ts"
+compatibility_date = "2024-04-01"
+
+[triggers]
+crons = [ "0 0 * * *" ] # Run at midnight every day
+
+[vars]
+SUPABASE_URL = "https://jswdnoblhguzuejxclhf.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impzd2Rub2JsaGd1enVlanhjbGhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4ODU5MjMsImV4cCI6MjA5MjQ2MTkyM30.TkjelaCibfGZJivPuCJck0Bs3Peq03ngfe_71-d1ggE"
