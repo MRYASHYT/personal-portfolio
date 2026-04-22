@@ -1,8 +1,28 @@
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { getPublicProjects } from "@/utils/dataStore";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
 
 const ResearchProjectsSection = () => {
-  const researchProjects = getPublicProjects();
+  const { data, loading } = usePortfolioData();
+  const researchProjects = data ? getPublicProjects(data) : [];
+
+  if (loading) {
+    return (
+      <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
+        <div className="animate-pulse">
+          <div className="h-4 w-32 bg-border mb-8" />
+          <div className="space-y-12">
+            {[1, 2].map((i) => (
+              <div key={i} className="py-8 border-t border-border">
+                <div className="h-6 w-3/4 bg-border mb-4" />
+                <div className="h-20 w-full bg-border/50" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">

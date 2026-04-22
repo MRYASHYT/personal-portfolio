@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import {
-  getProjects,
-  saveProjects,
-  getPublications,
-  savePublications,
-  getBlogPosts,
-  saveBlogPosts,
+  fetchPortfolioData,
+  savePortfolioData,
   type ManagedProject,
   type ManagedPublication,
   type ManagedBlogPost,
+  type PortfolioData,
 } from "@/utils/dataStore";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "";
@@ -22,15 +19,15 @@ function now(): string {
 }
 
 // --- Password Gate ---
-const PasswordGate = ({ onUnlock }: { onUnlock: () => void }) => {
+const PasswordGate = ({ onUnlock }: { onUnlock: (pw: string) => void }) => {
   const [pw, setPw] = useState("");
   const [error, setError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (pw === ADMIN_PASSWORD) {
-      sessionStorage.setItem("admin_authed", "1");
-      onUnlock();
+      sessionStorage.setItem("admin_authed_pw", pw);
+      onUnlock(pw);
     } else {
       setError(true);
       setTimeout(() => setError(false), 1500);
@@ -163,18 +160,8 @@ const PriorityToggle = ({
 // ======================
 // PROJECT PANEL
 // ======================
-const ProjectPanel = () => {
-  const [projects, setProjects] = useState<ManagedProject[]>([]);
+const ProjectPanel = ({ projects, onUpdate }: { projects: ManagedProject[], onUpdate: (projects: ManagedProject[]) => void }) => {
   const [editing, setEditing] = useState<string | null>(null);
-
-  useEffect(() => {
-    setProjects(getProjects());
-  }, []);
-
-  const save = (updated: ManagedProject[]) => {
-    setProjects(updated);
-    saveProjects(updated);
-  };
 
   const addNew = () => {
     const newProject: ManagedProject = {
@@ -188,12 +175,12 @@ const ProjectPanel = () => {
       progress: 0,
       lastUpdated: now(),
     };
-    save([...projects, newProject]);
+    onUpdate([...projects, newProject]);
     setEditing(newProject.id);
   };
 
   const update = (id: string, patch: Partial<ManagedProject>) => {
-    save(
+    onUpdate(
       projects.map((p) =>
         p.id === id ? { ...p, ...patch, lastUpdated: now() } : p
       )
@@ -202,7 +189,7 @@ const ProjectPanel = () => {
 
   const remove = (id: string) => {
     if (confirm("Delete this project?")) {
-      save(projects.filter((p) => p.id !== id));
+      onUpdate(projects.filter((p) => p.id !== id));
       setEditing(null);
     }
   };
@@ -227,19 +214,19 @@ const ProjectPanel = () => {
             onClick={() => setEditing(editing === p.id ? null : p.id)}
             className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-foreground/5 transition-colors"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 text-left">
               <span
-                className={`w-2 h-2 rounded-full ${
+                className={`shrink-0 w-2 h-2 rounded-full ${
                   p.priority === "major" ? "bg-accent-glow" : "bg-amber-400"
                 }`}
               />
               <span className="text-[14px] text-foreground">{p.title}</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[12px] text-muted-foreground">
+              <span className="text-[12px] text-muted-foreground whitespace-nowrap">
                 {p.progress}%
               </span>
-              <span className="text-[12px] text-muted-foreground">
+              <span className="text-[12px] text-muted-foreground whitespace-nowrap">
                 {editing === p.id ? "▲" : "▼"}
               </span>
             </div>
@@ -310,18 +297,8 @@ const ProjectPanel = () => {
 // ======================
 // PUBLICATION PANEL
 // ======================
-const PublicationPanel = () => {
-  const [pubs, setPubs] = useState<ManagedPublication[]>([]);
+const PublicationPanel = ({ publications, onUpdate }: { publications: ManagedPublication[], onUpdate: (pubs: ManagedPublication[]) => void }) => {
   const [editing, setEditing] = useState<string | null>(null);
-
-  useEffect(() => {
-    setPubs(getPublications());
-  }, []);
-
-  const save = (updated: ManagedPublication[]) => {
-    setPubs(updated);
-    savePublications(updated);
-  };
 
   const addNew = () => {
     const newPub: ManagedPublication = {
@@ -334,13 +311,13 @@ const PublicationPanel = () => {
       progress: 0,
       lastUpdated: now(),
     };
-    save([...pubs, newPub]);
+    onUpdate([...publications, newPub]);
     setEditing(newPub.id);
   };
 
   const update = (id: string, patch: Partial<ManagedPublication>) => {
-    save(
-      pubs.map((p) =>
+    onUpdate(
+      publications.map((p) =>
         p.id === id ? { ...p, ...patch, lastUpdated: now() } : p
       )
     );
@@ -348,7 +325,7 @@ const PublicationPanel = () => {
 
   const remove = (id: string) => {
     if (confirm("Delete this publication?")) {
-      save(pubs.filter((p) => p.id !== id));
+      onUpdate(publications.filter((p) => p.id !== id));
       setEditing(null);
     }
   };
@@ -357,7 +334,7 @@ const PublicationPanel = () => {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-[16px] font-semibold text-foreground">
-          Publications ({pubs.length})
+          Publications ({publications.length})
         </h2>
         <button
           onClick={addNew}
@@ -367,27 +344,27 @@ const PublicationPanel = () => {
         </button>
       </div>
 
-      {pubs.map((p) => (
+      {publications.map((p) => (
         <div key={p.id} className="border border-border bg-card">
           <button
             onClick={() => setEditing(editing === p.id ? null : p.id)}
             className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-foreground/5 transition-colors"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 text-left overflow-hidden">
               <span
-                className={`w-2 h-2 rounded-full ${
+                className={`shrink-0 w-2 h-2 rounded-full ${
                   p.priority === "major" ? "bg-accent-glow" : "bg-amber-400"
                 }`}
               />
-              <span className="text-[14px] text-foreground truncate max-w-[400px]">
+              <span className="text-[14px] text-foreground truncate">
                 {p.title}
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[12px] text-muted-foreground">
+              <span className="text-[12px] text-muted-foreground whitespace-nowrap">
                 {p.progress}%
               </span>
-              <span className="text-[12px] text-muted-foreground">
+              <span className="text-[12px] text-muted-foreground whitespace-nowrap">
                 {editing === p.id ? "▲" : "▼"}
               </span>
             </div>
@@ -446,18 +423,8 @@ const PublicationPanel = () => {
 // ======================
 // BLOG POST PANEL
 // ======================
-const BlogPanel = () => {
-  const [posts, setPosts] = useState<ManagedBlogPost[]>([]);
+const BlogPanel = ({ posts, onUpdate }: { posts: ManagedBlogPost[], onUpdate: (posts: ManagedBlogPost[]) => void }) => {
   const [editing, setEditing] = useState<string | null>(null);
-
-  useEffect(() => {
-    setPosts(getBlogPosts());
-  }, []);
-
-  const save = (updated: ManagedBlogPost[]) => {
-    setPosts(updated);
-    saveBlogPosts(updated);
-  };
 
   const addNew = () => {
     const newPost: ManagedBlogPost = {
@@ -468,12 +435,12 @@ const BlogPanel = () => {
       content: "",
       lastUpdated: now(),
     };
-    save([...posts, newPost]);
+    onUpdate([...posts, newPost]);
     setEditing(newPost.id);
   };
 
   const update = (id: string, patch: Partial<ManagedBlogPost>) => {
-    save(
+    onUpdate(
       posts.map((p) =>
         p.id === id ? { ...p, ...patch, lastUpdated: now() } : p
       )
@@ -482,7 +449,7 @@ const BlogPanel = () => {
 
   const remove = (id: string) => {
     if (confirm("Delete this note?")) {
-      save(posts.filter((p) => p.id !== id));
+      onUpdate(posts.filter((p) => p.id !== id));
       setEditing(null);
     }
   };
@@ -514,18 +481,18 @@ const BlogPanel = () => {
             onClick={() => setEditing(editing === p.id ? null : p.id)}
             className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-foreground/5 transition-colors"
           >
-            <span className="text-[14px] text-foreground truncate max-w-[400px]">
+            <span className="text-[14px] text-foreground truncate pr-4">
               {p.title}
             </span>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0">
               <span
-                className={`px-2 py-0.5 text-[11px] border ${
+                className={`px-2 py-0.5 text-[11px] border whitespace-nowrap ${
                   statusColors[p.status] || statusColors.draft
                 }`}
               >
                 {p.status}
               </span>
-              <span className="text-[12px] text-muted-foreground">
+              <span className="text-[12px] text-muted-foreground whitespace-nowrap">
                 {editing === p.id ? "▲" : "▼"}
               </span>
             </div>
@@ -595,13 +562,47 @@ const BlogPanel = () => {
 // ======================
 const Admin = () => {
   const [authed, setAuthed] = useState(
-    sessionStorage.getItem("admin_authed") === "1"
+    sessionStorage.getItem("admin_authed_pw") !== null
   );
+  const [data, setData] = useState<PortfolioData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [tab, setTab] = useState<"projects" | "publications" | "notes">(
     "projects"
   );
 
+  useEffect(() => {
+    if (authed) {
+      async function load() {
+        const result = await fetchPortfolioData();
+        setData(result);
+        setLoading(false);
+      }
+      load();
+    }
+  }, [authed]);
+
+  const handleUpdate = async (newData: PortfolioData) => {
+    setData(newData);
+    setSaving(true);
+    const pw = sessionStorage.getItem("admin_authed_pw") || "";
+    const success = await savePortfolioData(newData, pw);
+    if (success) {
+      setLastSaved(new Date());
+    }
+    setSaving(false);
+  };
+
   if (!authed) return <PasswordGate onUnlock={() => setAuthed(true)} />;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-muted-foreground text-[14px] animate-pulse">Loading database...</p>
+      </div>
+    );
+  }
 
   const tabs = [
     { key: "projects" as const, label: "Projects" },
@@ -612,17 +613,22 @@ const Admin = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <div className="border-b border-border">
+      <div className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-md z-40">
         <div className="max-w-[800px] mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-[13px] text-accent-glow/60">●</span>
+            <span className={`text-[13px] ${saving ? "text-amber-400 animate-pulse" : "text-accent-glow"}`}>●</span>
             <span className="text-[15px] font-semibold text-foreground">
-              Control Panel
+              {saving ? "Saving Changes..." : "Control Panel"}
             </span>
+            {lastSaved && !saving && (
+              <span className="text-[11px] text-muted-foreground ml-2">
+                Last saved: {lastSaved.toLocaleTimeString()}
+              </span>
+            )}
           </div>
           <button
             onClick={() => {
-              sessionStorage.removeItem("admin_authed");
+              sessionStorage.removeItem("admin_authed_pw");
               setAuthed(false);
             }}
             className="text-[13px] text-muted-foreground hover:text-foreground transition-colors"
@@ -630,10 +636,8 @@ const Admin = () => {
             Lock
           </button>
         </div>
-      </div>
 
-      {/* Tabs */}
-      <div className="border-b border-border">
+        {/* Tabs */}
         <div className="max-w-[800px] mx-auto px-6 flex gap-0">
           {tabs.map((t) => (
             <button
@@ -653,9 +657,28 @@ const Admin = () => {
 
       {/* Content */}
       <div className="max-w-[800px] mx-auto px-6 py-8">
-        {tab === "projects" && <ProjectPanel />}
-        {tab === "publications" && <PublicationPanel />}
-        {tab === "notes" && <BlogPanel />}
+        {data && (
+          <>
+            {tab === "projects" && (
+              <ProjectPanel 
+                projects={data.projects} 
+                onUpdate={(p) => handleUpdate({ ...data, projects: p })} 
+              />
+            )}
+            {tab === "publications" && (
+              <PublicationPanel 
+                publications={data.publications} 
+                onUpdate={(p) => handleUpdate({ ...data, publications: p })} 
+              />
+            )}
+            {tab === "notes" && (
+              <BlogPanel 
+                posts={data.blogPosts} 
+                onUpdate={(p) => handleUpdate({ ...data, blogPosts: p })} 
+              />
+            )}
+          </>
+        )}
       </div>
     </main>
   );

@@ -1,8 +1,12 @@
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { getPublicBlogPosts } from "@/utils/dataStore";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
 
 const BlogSection = () => {
-  const blogPosts = getPublicBlogPosts();
+  const { data, loading } = usePortfolioData();
+  const blogPosts = data ? getPublicBlogPosts(data) : [];
+
+  if (loading) return null;
 
   return (
     <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-12">

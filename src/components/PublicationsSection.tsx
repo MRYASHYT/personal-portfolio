@@ -1,8 +1,12 @@
+import { usePortfolioData } from "@/hooks/usePortfolioData";
 import { getPublicPublications } from "@/utils/dataStore";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
 
 const PublicationsSection = () => {
-  const publications = getPublicPublications();
+  const { data, loading } = usePortfolioData();
+  const publications = data ? getPublicPublications(data) : [];
+
+  if (loading) return null; // Keep it simple for secondary sections or add skeleton if preferred
 
   return (
     <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
