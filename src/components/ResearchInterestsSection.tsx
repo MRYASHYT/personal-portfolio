@@ -5,9 +5,9 @@ const ResearchInterestsSection = () => {
   const { researchInterests } = resumeData;
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-20">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-12">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-6">
           Research Interests
         </h2>
       </FadeInOnScroll>

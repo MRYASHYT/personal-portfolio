@@ -5,9 +5,9 @@ const EducationSection = () => {
   const { education } = resumeData;
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-20">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Education
         </h2>
       </FadeInOnScroll>
@@ -17,7 +17,7 @@ const EducationSection = () => {
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
             <FadeInOnScroll>
-              <div className="py-14 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+              <div className="py-8 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6">
                 <div>
                   <h3 className="text-[20px] font-semibold text-foreground leading-snug">
                     {edu.degree}

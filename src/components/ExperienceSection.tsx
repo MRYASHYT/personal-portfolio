@@ -5,7 +5,7 @@ const ExperienceSection = () => {
   const { experience } = resumeData;
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pt-8 pb-20">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pt-8 pb-10">
       {/* About link - top right on desktop */}
       <div className="hidden lg:block fixed top-6 right-16 z-50 animate-fade-up">
         <button
@@ -27,7 +27,7 @@ const ExperienceSection = () => {
       </div>
 
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Experience
         </h2>
       </FadeInOnScroll>
@@ -37,7 +37,7 @@ const ExperienceSection = () => {
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
             <FadeInOnScroll>
-              <div className="py-14 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8">
+              <div className="py-8 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6">
                 <div>
                   <h3 className="text-[20px] font-semibold text-foreground leading-snug">
                     {job.title}

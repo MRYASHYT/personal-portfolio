@@ -5,9 +5,9 @@ const ResearchProjectsSection = () => {
   const researchProjects = getPublicProjects();
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-20">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Research Projects
         </h2>
       </FadeInOnScroll>
@@ -17,7 +17,7 @@ const ResearchProjectsSection = () => {
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
             <FadeInOnScroll>
-              <div className="py-14">
+              <div className="py-8">
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <h3 className="text-[20px] font-semibold text-foreground leading-snug">
                     {project.title}

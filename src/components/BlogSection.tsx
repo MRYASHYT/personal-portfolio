@@ -5,9 +5,9 @@ const BlogSection = () => {
   const blogPosts = getPublicBlogPosts();
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-24">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-12">
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-12">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-6">
           Research Notes
         </h2>
       </FadeInOnScroll>
@@ -17,7 +17,7 @@ const BlogSection = () => {
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
             <FadeInOnScroll>
-              <div className="py-8 group cursor-pointer">
+              <div className="py-5 group cursor-pointer">
                 <p className="text-[16px] leading-[1.6] text-foreground group-hover:text-accent-glow transition-colors duration-300">
                   {post.title}
                 </p>

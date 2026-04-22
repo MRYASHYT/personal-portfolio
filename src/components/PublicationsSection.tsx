@@ -5,9 +5,9 @@ const PublicationsSection = () => {
   const publications = getPublicPublications();
 
   return (
-    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-20">
+    <section className="lg:ml-[480px] px-10 lg:px-0 lg:pr-16 pb-10">
       <FadeInOnScroll>
-        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-16">
+        <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Publications
         </h2>
       </FadeInOnScroll>
@@ -17,7 +17,7 @@ const PublicationsSection = () => {
           <div key={index}>
             {index > 0 && <div className="border-t border-border" />}
             <FadeInOnScroll>
-              <div className="py-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-start">
+              <div className="py-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-start">
                 <div>
                   <p className="text-[15px] text-foreground/90 leading-[1.75]">
                     <span className="text-foreground font-medium">
