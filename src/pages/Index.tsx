@@ -9,7 +9,7 @@ import BlogSection from "@/components/BlogSection";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Sidebar />
       <ExperienceSection />
       <ResearchProjectsSection />

@@ -5,7 +5,7 @@ const Sidebar = () => {
   const { personal } = resumeData;
 
   return (
-    <aside className="lg:fixed lg:top-0 lg:left-0 lg:w-[420px] lg:h-screen px-10 pt-8 pb-12 lg:py-8 flex flex-col lg:overflow-y-auto lg:scrollbar-hide">
+    <aside className="lg:fixed lg:top-0 lg:left-0 lg:w-[420px] lg:h-screen px-6 lg:px-10 pt-8 pb-8 lg:py-8 flex flex-col lg:overflow-y-auto lg:scrollbar-hide">
       {/* Name & Title */}
       <div className="animate-fade-up">
         {personal.image && (
@@ -24,7 +24,7 @@ const Sidebar = () => {
       </div>
 
       {/* Bio */}
-      <div id="about" className="mt-auto lg:mt-10">
+      <div id="about" className="mt-12 lg:mt-10">
         <div className="border-t border-border mb-8" />
         <p className="text-[14px] leading-[1.8] text-muted-foreground max-w-[300px] animate-fade-up-delay-1 whitespace-pre-line">
           {personal.bio}
@@ -50,7 +50,7 @@ const Sidebar = () => {
       </div>
 
       {/* Contact Links */}
-      <nav className="mt-auto lg:mt-12 space-y-3 animate-fade-up-delay-3">
+      <nav className="mt-12 lg:mt-auto space-y-3 animate-fade-up-delay-3">
         <div className="border-t border-border mb-8" />
         <a
           href={`mailto:${personal.email}`}
