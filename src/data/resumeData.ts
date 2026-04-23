@@ -169,7 +169,7 @@ export const resumeData: ResumeData = {
   blogPosts: [
     {
       title:
-        "ReAct agents drift after 7 tool calls — here is what I found and why benchmarks miss it entirely",
+        "ReAct agents drift after 7 tool calls — and standard benchmarks completely miss it",
       slug: "react-agent-drift",
       status: "published",
       content: `There is a failure mode in ReAct-style agents that I have been observing repeatedly while building AgentStress, and I have not seen it documented anywhere in the standard benchmarking literature.
@@ -250,7 +250,9 @@ If you are evaluating an agent system for enterprise deployment and you are rely
 
 Building evaluation frameworks that capture trajectory reliability — not just endpoint accuracy — is, I think, one of the most important open problems in practical agentic AI right now.
 
-This note is part of an ongoing series documenting what I find while building AgentStress, a framework for systematic failure mode testing of agentic pipelines.`,
+This note is part of an ongoing series documenting what I find while building AgentStress, a framework for systematic failure mode testing of agentic pipelines.
+
+*Last updated: April 2026*`,
     },
     {
       title:

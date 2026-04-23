@@ -9,7 +9,7 @@ const BlogSection = () => {
   if (loading) return null;
 
   return (
-    <section className="lg:ml-[480px] px-6 lg:px-0 lg:pr-16 pb-8 lg:pb-12">
+    <section className="xl:ml-[480px] px-6 xl:px-0 xl:pr-16 pb-8 xl:pb-12">
       <FadeInOnScroll>
         <h2 className="text-[14px] tracking-wide text-muted-foreground mb-6">
           Research Notes

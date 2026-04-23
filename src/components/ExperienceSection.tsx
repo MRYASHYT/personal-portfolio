@@ -5,7 +5,7 @@ const ExperienceSection = () => {
   const { experience } = resumeData;
 
   return (
-    <section className="lg:ml-[480px] px-6 lg:px-0 lg:pr-16 pt-4 lg:pt-8 pb-6 lg:pb-10">
+    <section className="xl:ml-[480px] px-6 xl:px-0 xl:pr-16 pt-4 xl:pt-8 pb-6 xl:pb-10">
       {/* About link - top right on desktop */}
       <div className="hidden lg:block fixed top-6 right-16 z-50 animate-fade-up">
         <button

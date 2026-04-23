@@ -5,7 +5,7 @@ const EducationSection = () => {
   const { education } = resumeData;
 
   return (
-    <section className="lg:ml-[480px] px-6 lg:px-0 lg:pr-16 pb-6 lg:pb-10">
+    <section className="xl:ml-[480px] px-6 xl:px-0 xl:pr-16 pb-6 xl:pb-10">
       <FadeInOnScroll>
         <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Education

@@ -8,7 +8,7 @@ const ResearchProjectsSection = () => {
 
   if (loading) {
     return (
-      <section className="lg:ml-[480px] px-6 lg:px-0 lg:pr-16 pb-6 lg:pb-10">
+      <section className="xl:ml-[480px] px-6 xl:px-0 xl:pr-16 pb-6 xl:pb-10">
         <div className="animate-pulse">
           <div className="h-4 w-32 bg-border mb-8" />
           <div className="space-y-12">
@@ -25,7 +25,7 @@ const ResearchProjectsSection = () => {
   }
 
   return (
-    <section className="lg:ml-[480px] px-6 lg:px-0 lg:pr-16 pb-6 lg:pb-10">
+    <section className="xl:ml-[480px] px-6 xl:px-0 xl:pr-16 pb-6 xl:pb-10">
       <FadeInOnScroll>
         <h2 className="text-[14px] tracking-wide text-muted-foreground mb-8">
           Research Projects

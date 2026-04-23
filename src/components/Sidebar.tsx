@@ -5,7 +5,7 @@ const Sidebar = () => {
   const { personal } = resumeData;
 
   return (
-    <aside className="lg:fixed lg:top-0 lg:left-0 lg:w-[420px] lg:h-screen px-6 lg:px-10 pt-8 pb-8 lg:py-8 flex flex-col lg:overflow-y-auto lg:scrollbar-hide">
+    <aside className="xl:fixed xl:top-0 xl:left-0 xl:w-[420px] xl:h-screen px-6 xl:px-10 pt-8 pb-8 xl:py-8 flex flex-col xl:overflow-y-auto xl:scrollbar-hide">
       {/* Name & Title */}
       <div className="animate-fade-up">
         {personal.image && (
