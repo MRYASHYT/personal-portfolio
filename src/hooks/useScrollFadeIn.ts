@@ -15,11 +15,19 @@ export function useScrollFadeIn() {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 }
     );
 
+    // Safety fallback: force visibility after 1.5 seconds if observer fails
+    const timeout = setTimeout(() => {
+      setIsVisible(true);
+    }, 1500);
+
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
   }, []);
 
   return { ref, isVisible };
