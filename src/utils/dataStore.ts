@@ -160,5 +160,6 @@ export function getPublicBlogPosts(data: PortfolioData) {
     .map((p) => ({
       title: p.title,
       slug: p.slug,
+      content: p.content,
     }));
 }
