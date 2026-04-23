@@ -50,7 +50,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    overscroll-behavior-y: contain;
   }
 
   ::selection {

@@ -75,7 +75,7 @@ export const resumeData: ResumeData = {
   experience: [
     {
       title: "Research & Development",
-      company: "Independent Researcher",
+      company: "Independent AI Researcher",
       location: "Delhi, India",
       dates: `${new Date().getFullYear()} — Present`,
       responsibilities: [
